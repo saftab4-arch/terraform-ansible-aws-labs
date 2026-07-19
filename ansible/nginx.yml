@@ -1,0 +1,50 @@
+---
+- name: Update workers and install Nginx
+  hosts: workers
+  become: true
+
+  tasks:
+
+    - name: Update apt package cache
+      ansible.builtin.apt:
+        update_cache: true
+        cache_valid_time: 3600
+
+    - name: Upgrade installed packages
+      ansible.builtin.apt:
+        upgrade: safe
+
+    - name: Install Nginx
+      ansible.builtin.apt:
+        name: nginx
+        state: present
+
+    - name: Start and enable Nginx
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: true
+
+    - name: Deploy custom homepage
+      ansible.builtin.copy:
+        dest: /var/www/html/index.html
+        owner: root
+        group: root
+        mode: "0644"
+        content: |
+          <!DOCTYPE html>
+          <html>
+          <head>
+              <title>Ansible Nginx Lab</title>
+          </head>
+          <body>
+              <h1>Nginx deployed successfully with Ansible</h1>
+              <p>Server: {{ inventory_hostname }}</p>
+              <p>Private IP: {{ ansible_host }}</p>
+          </body>
+          </html>
+
+    - name: Verify Nginx is responding locally
+      ansible.builtin.uri:
+        url: http://localhost
+        status_code: 200
