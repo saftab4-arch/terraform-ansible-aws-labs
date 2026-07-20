@@ -1,0 +1,12 @@
+---
+common_packages:
+  - jq
+  - net-tools
+  - dnsutils
+  - traceroute
+  - tcpdump
+  - rsync
+
+common_package_state: present
+common_update_cache: true
+common_cache_valid_time: 3600

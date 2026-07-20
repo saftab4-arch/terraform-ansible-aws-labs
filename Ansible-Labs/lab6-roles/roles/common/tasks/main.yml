@@ -1,0 +1,16 @@
+# tasks file for roles/common
+
+---
+- name: Update apt package cache
+  ansible.builtin.apt:
+    update_cache: "{{ common_update_cache }}"
+    cache_valid_time: "{{ common_cache_valid_time }}"
+  tags:
+    - common
+
+- name: Install common operations packages
+  ansible.builtin.apt:
+    name: "{{ common_packages }}"
+    state: "{{ common_package_state }}"
+  tags:
+    - common

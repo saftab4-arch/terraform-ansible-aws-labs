@@ -1,0 +1,13 @@
+page_title: "Syed's Production Nginx"
+
+welcome_message: "Managed by Ansible"
+
+server_name: "AWS Worker Node"
+
+lab_environment: "Development Lab"
+
+owner: "Syed Aftab - Cloud Engineer"
+
+company: "Cloud Engineering Lab"
+
+footer: "Lab 5 - Templates & Handlers"

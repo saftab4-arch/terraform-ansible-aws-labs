@@ -1,0 +1,24 @@
+---
+- name: Lab 3 - Variables and Conditionals
+  hosts: workers
+  become: true
+
+  vars_files:
+    - vars.yml
+
+  tasks:
+    - name: Update apt cache
+      ansible.builtin.apt:
+        update_cache: true
+        cache_valid_time: 3600
+
+    - name: Install package from variable
+      ansible.builtin.apt:
+        name: "{{ package_name }}"
+        state: "{{ package_state }}"
+
+    - name: Ensure Nginx is enabled and running
+      ansible.builtin.service:
+        name: "{{ package_name }}"
+        state: "{{ service_state }}"
+        enabled: "{{ service_enabled }}"

@@ -1,0 +1,16 @@
+---
+nginx_package_name: nginx
+nginx_package_state: present
+
+nginx_service_name: nginx
+nginx_service_state: started
+nginx_service_enabled: true
+
+nginx_page_title: "Ansible Roles Demo"
+nginx_welcome_message: "Nginx Managed Through an Ansible Role"
+nginx_environment: "Development"
+nginx_owner: "Syed Aftab"
+nginx_footer: "Lab 6 - Ansible Roles"
+
+
+# defaults file for roles/nginx

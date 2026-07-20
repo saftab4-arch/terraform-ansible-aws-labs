@@ -1,0 +1,12 @@
+packages:
+  - git
+  - curl
+  - unzip
+  - vim
+  - htop
+  - docker.io
+
+package_state: present
+docker_service_name: docker
+docker_service_state: started
+docker_service_enabled: true

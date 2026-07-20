@@ -1,0 +1,9 @@
+---
+- name: Lab 6 - Ansible Roles
+  hosts: workers
+  become: true
+
+  roles:
+    - common
+    - docker
+    - nginx

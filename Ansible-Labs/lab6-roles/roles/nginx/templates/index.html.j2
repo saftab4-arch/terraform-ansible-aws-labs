@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{ nginx_page_title }}</title>
+</head>
+
+<body>
+
+    <h1>{{ nginx_welcome_message }}</h1>
+
+    <hr>
+
+    <p><strong>Server:</strong> {{ inventory_hostname }}</p>
+    <p><strong>Environment:</strong> {{ nginx_environment }}</p>
+    <p><strong>Owner:</strong> {{ nginx_owner }}</p>
+
+    <hr>
+
+    <p>{{ nginx_footer }}</p>
+
+</body>
+
+</html>

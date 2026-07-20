@@ -1,0 +1,5 @@
+package_name: nginx
+package_state: present
+
+service_state: started
+service_enabled: true

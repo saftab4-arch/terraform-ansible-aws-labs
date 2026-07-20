@@ -1,0 +1,13 @@
+
+# defaults file for roles/docker
+
+---
+docker_package_name: docker.io
+docker_package_state: present
+
+docker_service_name: docker
+docker_service_state: started
+docker_service_enabled: true
+
+docker_users:
+  - ubuntu

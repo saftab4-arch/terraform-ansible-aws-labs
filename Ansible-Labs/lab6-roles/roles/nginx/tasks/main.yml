@@ -1,0 +1,29 @@
+
+# tasks file for roles/nginx
+
+
+---
+- name: Install Nginx package
+  ansible.builtin.apt:
+    name: "{{ nginx_package_name }}"
+    state: "{{ nginx_package_state }}"
+    update_cache: true
+  tags:
+    - nginx
+- name: Ensure Nginx service is running and enabled
+  ansible.builtin.service:
+    name: "{{ nginx_service_name }}"
+    state: "{{ nginx_service_state }}"
+    enabled: "{{ nginx_service_enabled }}"
+  tags:
+    - nginx
+- name: Deploy custom Nginx homepage
+  ansible.builtin.template:
+    src: index.html.j2
+    dest: /var/www/html/index.html
+    owner: root
+    group: root
+    mode: "0644"
+  notify: Restart Nginx
+  tags:
+    - nginx
